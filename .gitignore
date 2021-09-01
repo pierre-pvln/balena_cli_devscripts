@@ -1,0 +1,11 @@
+#
+# @name:     .gitignore
+# @purpose:  files to ignore when puschin to git
+#
+# @version   v0.0.1  2021-09-01
+# @author    pierre@ipheion.eu
+# @copyright (C) 2020-2021 Pierre Veelen
+
+# settings
+.settings
+.set
