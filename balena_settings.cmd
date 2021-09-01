@@ -1,7 +1,7 @@
 @ECHO off
 ::
 :: @name:     balena_settings.cmd
-:: @purpose:  show the settings fro balena CLI
+:: @purpose:  show the settings from balena CLI
 ::
 :: @version   v0.0.3  2021-08-26
 :: @author    pierre@ipheion.eu
@@ -22,7 +22,7 @@ SET CMD_DIR=%~dp0
 
 ECHO [INFO ] Balena CLI Settings
 ECHO.
-call "C:\Program Files\balena-cli\bin\balena" settings
+CALL "C:\Program Files\balena-cli\bin\balena" settings
 
 CD %CMD_DIR%
 

@@ -22,10 +22,10 @@ SET CMD_DIR=%~dp0
 
 SET ERROR_MESSAGE=[INFO ] No error
 
-call .\utils\balena_application.cmd
+call .\utils\balena_organization.cmd
 cd %CMD_DIR%
 
-call .\utils\balena_organization.cmd
+call .\utils\balena_application.cmd
 cd %CMD_DIR%
 
 :: set python / conda environment

@@ -20,10 +20,10 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
-call .\utils\balena_fleet.cmd
+call .\utils\balena_organization.cmd
 cd %CMD_DIR%
 
-call .\utils\balena_organization.cmd
+call .\utils\balena_fleet.cmd
 cd %CMD_DIR%
 
 cd ..\containers
