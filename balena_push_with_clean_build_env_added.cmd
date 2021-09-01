@@ -1,6 +1,6 @@
 @ECHO off
 ::
-:: @name:     balena_push_with_clean_build.cmd
+:: @name:     balena_push_with_clean_build_env_added.cmd
 :: @purpose:  (re)build the container(s)
 ::
 :: @version   v0.0.3  2021-08-26
@@ -40,6 +40,14 @@ CD ..\containers
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --nocache --debug
 CALL "C:\Program Files\balena-cli\bin\balena" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --nocache
 
-CD %CMD_DIR%
+:: https://www.balena.io/docs/reference/balena-cli/#envs
+:: set environment variables for usage with AIS dAISy HAT rpi
+:: Disable bluetooth serial
+CALL "C:\Program Files\balena-cli\bin\balena" env add BALENA_HOST_CONFIG_dtoverlay "\"vc4-fkms-v3d\", \"disable-bt\"" --fleet %BALENA_ORGANIZATION%/%BALENA_FLEET%
+CALL "C:\Program Files\balena-cli\bin\balena" env add RESIN_HOST_CONFIG_dtoverlay "\"vc4-fkms-v3d\", \"disable-bt\"" --fleet %BALENA_ORGANIZATION%/%BALENA_FLEET%
+:: Enable uart 
+CALL "C:\Program Files\balena-cli\bin\balena" env add BALENA_HOST_CONFIG_enable_uart "1" --fleet %BALENA_ORGANIZATION%/%BALENA_FLEET%
+CALL "C:\Program Files\balena-cli\bin\balena" env add RESIN_HOST_CONFIG_enable_uart "1" --fleet %BALENA_ORGANIZATION%/%BALENA_FLEET%
 
+CD %CMD_DIR%
 PAUSE

@@ -20,26 +20,26 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
-call .\utils\balena_fleet.cmd
-cd %CMD_DIR%
+CALL .\utils\balena_organization.cmd
+CD %CMD_DIR%
 
-call .\utils\balena_organization.cmd
-cd %CMD_DIR%
+CALL .\utils\balena_fleet.cmd
+CD %CMD_DIR%
 
 ECHO [INFO ] Start building container(s) ...
 ECHO [INFO ] Building as:
 CALL "C:\Program Files\balena-cli\bin\balena" whoami
 ECHO.
 
-cd ..\containers
+CD ..\containers
 :: Build a fresh image, preventing the use of cached imaged layers from previous builds of this project   
 :: https://www.balena.io/docs/learn/deploy/deployment/#balena-push
 :: https://www.balena.io/docs/learn/deploy/deployment/#--nocache--c
 
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --pull
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --nocache --debug
-call "C:\Program Files\balena-cli\bin\balena" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --pull
+CALL "C:\Program Files\balena-cli\bin\balena" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --pull
 
-cd ..\balena-cli
+CD %CMD_DIR%
 
-pause
+PAUSE
