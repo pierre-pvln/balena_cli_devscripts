@@ -1,6 +1,6 @@
 @ECHO off
 ::
-:: @name:     balena_envs.cmd
+:: @name:     balena_envs_get.cmd
 :: @purpose:  show the balena environment settings
 ::
 :: @version   v0.0.3  2021-08-26
