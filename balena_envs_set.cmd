@@ -1,7 +1,7 @@
 @ECHO off
 ::
 :: @name:     balena_envs_set.cmd
-:: @purpose:  show the balena environment settings
+:: @purpose:  set balena environment settings
 ::
 :: @version   v0.0.3  2021-08-26
 :: @author    pierre@ipheion.eu
@@ -27,10 +27,14 @@ cd %CMD_DIR%
 call .\utils\balena_fleet.cmd
 
 CD %CMD_DIR%
-CALL .\envs\cm4io_usb_on.cmd
+IF EXIST "..\containers\cm4io_usb_on" (
+    CALL .\envs\cm4io_usb_on.cmd
+)
 
-::CD %CMD_DIR%
-::CALL .\envs\ais_daysi_hat.cmd
+CD %CMD_DIR%
+IF EXIST "..\containers\ais_daysi_hat" (
+    CALL .\envs\ais_daysi_hat.cmd
+)
 
 CD %CMD_DIR%
 pause

@@ -42,10 +42,14 @@ CD ..\containers
 CALL "C:\Program Files\balena-cli\bin\balena" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --pull
 
 CD %CMD_DIR%
-CALL .\envs\cm4io_usb_on.cmd
+IF EXIST "..\containers\cm4io_usb_on" (
+    CALL .\envs\cm4io_usb_on.cmd
+)
 
-::CD %CMD_DIR%
-::CALL .\envs\ais_daysi_hat.cmd
+CD %CMD_DIR%
+IF EXIST "..\containers\ais_daysi_hat" (
+    CALL .\envs\ais_daysi_hat.cmd
+)
 
 CD %CMD_DIR%
 PAUSE
