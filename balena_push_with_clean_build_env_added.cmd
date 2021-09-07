@@ -3,7 +3,7 @@
 :: @name:     balena_push_with_clean_build_env_added.cmd
 :: @purpose:  (re)build the container(s)
 ::
-:: @version   v0.0.3  2021-08-26
+:: @version   v0.0.4  2021-09-07
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
@@ -41,14 +41,18 @@ CD ..\containers
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --nocache --debug
 CALL "C:\Program Files\balena-cli\bin\balena" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --nocache
 
-CD %CMD_DIR%
-IF EXIST "..\containers\cm4io_usb_on" (
-    CALL .\envs\cm4io_usb_on.cmd
-)
+IF %errorlevel% EQU 0 (
+	CD %CMD_DIR%
+	IF EXIST "..\containers\cm4io_usb_on" (
+		CALL .\envs\cm4io_usb_on.cmd
+	)
 
-CD %CMD_DIR%
-IF EXIST "..\containers\ais_daysi_hat" (
-    CALL .\envs\ais_daysi_hat.cmd
+	CD %CMD_DIR%
+	IF EXIST "..\containers\ais_daysi_hat" (
+		CALL .\envs\ais_daysi_hat.cmd
+	)
+) ELSE (
+	ECHO [Error] Did not set enviroment vars ...
 )
 
 CD %CMD_DIR%
