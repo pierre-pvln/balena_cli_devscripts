@@ -29,6 +29,7 @@ CALL .\utils\balena_fleet.cmd
 CD %CMD_DIR%
 CALL .\utils\balena_version.cmd
 
+CD %CMD_DIR%
 ECHO [INFO ] Start building container(s) ...
 ECHO [INFO ] Building as:
 CALL "C:\Program Files\balena-cli\bin\balena" whoami
