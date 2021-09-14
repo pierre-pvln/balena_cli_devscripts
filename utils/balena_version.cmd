@@ -16,7 +16,7 @@ SET BALENA_VERSION_FOLDER=
 :: http://www.robvanderwoude.com/ntfor.php
 ::
 IF "%BALENA_VERSION_FOLDER%"=="" (
-	CD ..\..
+	CD ..
 	FOR %%I IN (.) DO SET BALENA_VERSION_FOLDER=%%~nxI
 )
 

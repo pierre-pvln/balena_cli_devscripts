@@ -27,6 +27,12 @@ cd %CMD_DIR%
 call .\utils\balena_fleet.cmd
 
 CD %CMD_DIR%
+CALL .\utils\balena_version.cmd
+
+CALL "C:\Program Files\balena-cli\bin\balena" env add THIS_CODE_FOLDER %BALENA_FLEET% -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
+CALL "C:\Program Files\balena-cli\bin\balena" env add THIS_VERSION_FOLDER %BALENA_VERSION_FOLDER% -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
+
+CD %CMD_DIR%
 IF EXIST "..\containers\cm4io_usb_on" (
     CALL .\envs\cm4io_usb_on.cmd
 )
