@@ -20,11 +20,14 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
+CD %CMD_DIR%
 CALL .\utils\balena_organization.cmd
-CD %CMD_DIR%
 
-CALL .\utils\balena_fleet.cmd
 CD %CMD_DIR%
+CALL .\utils\balena_fleet.cmd
+
+CD %CMD_DIR%
+CALL .\utils\balena_version.cmd
 
 ECHO [INFO ] Start building container(s) ...
 ECHO [INFO ] Building as:
@@ -40,6 +43,14 @@ CD ..\containers
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --nocache --debug
 CALL "C:\Program Files\balena-cli\bin\balena" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --nocache
 
-CD %CMD_DIR%
+IF %errorlevel% EQU 0 (
+	:: Set info on folders used for code and settings
+	CALL "C:\Program Files\balena-cli\bin\balena" env add THIS_CODE_FOLDER %BALENA_FLEET% -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
+	CALL "C:\Program Files\balena-cli\bin\balena" env add THIS_VERSION_FOLDER %BALENA_VERSION_FOLDER% -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
+	
+) ELSE (
+	ECHO [ERROR] Did not set enviroment vars ...
+)
 
+CD %CMD_DIR%
 PAUSE

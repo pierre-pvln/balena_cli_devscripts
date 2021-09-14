@@ -37,4 +37,9 @@ IF EXIST "..\containers\ais_daysi_hat" (
 )
 
 CD %CMD_DIR%
+IF EXIST "..\containers\envs_for_services" (
+	CALL .\envs\envs_for_services.cmd
+)
+
+CD %CMD_DIR%
 pause
