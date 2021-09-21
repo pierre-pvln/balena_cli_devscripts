@@ -1,4 +1,4 @@
-# balena_cli_devscripts
+# Balena CLI scripts for development
 Scripts for easy updating balena configurations using balena CLI
 
 Put empty file in folder ../containers to set balena environment variables
