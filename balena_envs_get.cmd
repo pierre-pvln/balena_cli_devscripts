@@ -27,8 +27,13 @@ call .\utils\balena_fleet.cmd
 cd %CMD_DIR%
 
 cd ..\containers
+ECHO [INFO ] List the "configuration variables" that control balena platform features ...
+call "C:\Program Files\balena-cli\bin\balena" envs --application %BALENA_ORGANIZATION%/%BALENA_FLEET% --config --json
 
+ECHO [INFO ] List the environment variables ...
 call "C:\Program Files\balena-cli\bin\balena" envs --application %BALENA_ORGANIZATION%/%BALENA_FLEET% --json
+
+
 ::
 ::call "C:\Program Files\balena-cli\bin\balena" envs --device 7fc86c5 --json
 ::
