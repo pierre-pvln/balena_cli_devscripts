@@ -3,7 +3,7 @@
 :: @name:     balena_envs_set.cmd
 :: @purpose:  set balena environment settings
 ::
-:: @version   v0.0.3  2021-08-26
+:: @version   v0.0.5  2021-09-29
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
@@ -20,14 +20,32 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
+SET ERROR_MESSAGE=[INFO ] No error ...
+
+ECHO [INFO ] Are we up to date? ...
+::    -s, --short           show status concisely
+::    -b, --branch          show branch information
+git status -s -b
+ECHO.
 cd %CMD_DIR%
+
+call .\utils\balena_login.cmd
+IF %ERRORLEVEL% NEQ 0 (
+	SET ERROR_MESSAGE=[ERROR] Setting login credentials not succesfull ...  		
+	GOTO :ERROR_EXIT
+)
+cd %CMD_DIR%
+
 call .\utils\balena_organization.cmd
-
 cd %CMD_DIR%
-call .\utils\balena_fleet.cmd
 
+call .\utils\balena_fleet.cmd
 CD %CMD_DIR%
+
 CALL .\utils\balena_version.cmd
+::	 
+:: The actual programs/scripts to run
+::
 
 CALL "C:\Program Files\balena-cli\bin\balena" env add THIS_CODE_FOLDER %BALENA_FLEET% -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
 CALL "C:\Program Files\balena-cli\bin\balena" env add THIS_VERSION_FOLDER %BALENA_VERSION_FOLDER% -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
@@ -47,5 +65,15 @@ IF EXIST "..\containers\envs_for_services" (
 	CALL .\envs\envs_for_services.cmd
 )
 
+GOTO :CLEAN_EXIT
+
+:ERROR_EXIT
+ECHO %ERROR_MESSAGE%
+ECHO.
+::timeout /T 5
+
+:CLEAN_EXIT
 CD %CMD_DIR%
-pause
+
+::timeout /T 5
+PAUSE
