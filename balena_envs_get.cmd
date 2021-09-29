@@ -20,7 +20,7 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
-SET ERROR_MESSAGE=[INFO ] No error
+SET ERROR_MESSAGE=[INFO ] No error ...
 
 ECHO [INFO ] Are we up to date? ...
 ::    -s, --short           show status concisely
@@ -36,12 +36,15 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 cd %CMD_DIR%
 
-call .\utils\balena_organization.cmd
-cd %CMD_DIR%
+CALL .\utils\balena_organization.cmd
+CD %CMD_DIR%
 
-call .\utils\balena_fleet.cmd
-cd %CMD_DIR%
+CALL .\utils\balena_fleet.cmd
+CD %CMD_DIR%
 
+::	 
+:: The actual programs/scripts to run
+::
 cd ..\containers
 ECHO [INFO ] List the "configuration variables" that control balena platform features ...
 call "C:\Program Files\balena-cli\bin\balena" envs --application %BALENA_ORGANIZATION%/%BALENA_FLEET% --config --json
