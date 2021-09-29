@@ -3,7 +3,7 @@
 :: @name:     balena_login.cmd
 :: @purpose:  login to balena
 ::
-:: @version   v0.0.3  2021-08-26
+:: @version   v0.0.4  2021-08-26
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
