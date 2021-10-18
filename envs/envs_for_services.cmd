@@ -1,3 +1,11 @@
+::
+:: @name:     envs_for_services.cmd
+:: @purpose:  set environment variables for services
+::
+:: @version   v0.0.5  2021-09-29
+:: @author    pierre@ipheion.eu
+:: @copyright (C) 2020-2021 Pierre Veelen
+::
 ECHO [INFO ] Setting environment variables for services ...
 :: https://www.balena.io/docs/reference/balena-cli/#envs
 

@@ -1,3 +1,11 @@
+::
+:: @name:     ais_daysi_hat.cmd
+:: @purpose:  set environment variables for usage with daysi hat
+::
+:: @version   v0.0.5  2021-09-29
+:: @author    pierre@ipheion.eu
+:: @copyright (C) 2020-2021 Pierre Veelen
+::
 ECHO [INFO ] Setting environment variables for disabling bluetooth and enabling uart on CM4 IO board ...
 :: https://www.balena.io/docs/reference/balena-cli/#envs
 :: set environment variables for usage with AIS dAISy HAT rpi
