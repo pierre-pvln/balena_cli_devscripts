@@ -47,8 +47,7 @@ EXIT /B 1
 :CLEAN_EXIT_SUBSCRIPT
 ECHO [INFO ] Balena Application: %BALENA_APPLICATION% ...
 ECHO.
-ECHO [INFO ] For forward compatibility: 
-ECHO [INFO ] Balena Fleet: %BALENA_FLEET% ...
+ECHO [INFO ] For forward compatibility Balena Fleet: %BALENA_FLEET% ...
 ECHO.
 ::timeout /T 5
 EXIT /B 0

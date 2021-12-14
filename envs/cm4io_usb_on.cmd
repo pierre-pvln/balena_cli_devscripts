@@ -1,3 +1,11 @@
+::
+:: @name:     cm4io_usb_on.cmd
+:: @purpose:  set environment variables for enabling USB on CM4 io board
+::
+:: @version   v0.0.5  2021-09-29
+:: @author    pierre@ipheion.eu
+:: @copyright (C) 2020-2021 Pierre Veelen
+::
 ECHO [INFO ] Setting environment variables for enabling USB on CM4 IO board ...
 :: https://www.balena.io/docs/reference/balena-cli/#envs
 :: https://forums.balena.io/t/cm4-sierra-em7345-modem/328468/5
