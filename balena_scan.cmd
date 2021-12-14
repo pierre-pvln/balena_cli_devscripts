@@ -3,7 +3,7 @@
 :: @name:     balena_scan.cmd
 :: @purpose:  scan for local hardware
 ::
-:: @version   v0.0.3  2021-08-26
+:: @version   v0.0.4  2021-12-14
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
@@ -20,11 +20,25 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
-ECHO [INFO ] Scan for local Balena hardware
+:: BALENA SETTINGS
+:: ===============
+SET "BALENA_CLI=C:\Program Files\balena-cli\bin\balena"
+
+:: Check balenadev scripts with github 
+:: ===================================
+ECHO [INFO ] Are we up to date with the balenadev scripts? ...
+::    -s, --short           show status concisely
+::    -b, --branch          show branch information
+git status -s -b
 ECHO.
-
-CALL "C:\Program Files\balena-cli\bin\balena" scan 
-
+timeout /T 5
 CD %CMD_DIR%
 
+ECHO.
+ECHO [INFO ] Scan for local Balena hardware
+ECHO.
+CALL "%BALENA_CLI%" scan 
+CD %CMD_DIR%
+
+ECHO.
 PAUSE

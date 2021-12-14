@@ -3,7 +3,7 @@
 :: @name:     balena_login.cmd
 :: @purpose:  login to balena
 ::
-:: @version   v0.0.3  2021-08-26
+:: @version   v0.0.4  2021-12-14
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
@@ -22,29 +22,43 @@ SET CMD_DIR=%~dp0
 
 SET ERROR_MESSAGE=[INFO ] No error
 
-call .\utils\balena_organization.cmd
-cd %CMD_DIR%
+:: BALENA SETTINGS
+:: ===============
+SET "BALENA_CLI=C:\Program Files\balena-cli\bin\balena"
 
-call .\utils\balena_application.cmd
-cd %CMD_DIR%
+:: Check balenadev scripts with github 
+:: ===================================
+ECHO [INFO ] Are we up to date with the balenadev scripts? ...
+::    -s, --short           show status concisely
+::    -b, --branch          show branch information
+git status -s -b
+ECHO.
+timeout /T 5
+CD %CMD_DIR%
 
-:: set python / conda environment
+CALL .\utils\balena_organization.cmd
+CD %CMD_DIR%
+
+CALL .\utils\balena_application.cmd
+CD %CMD_DIR%
+
+:: set API Token
 IF EXIST "..\..\.settings\.token" (
 	SET /p BALENA_APITOKEN=<"..\..\.settings\.token"
 )
 
 IF "%BALENA_APITOKEN%" == "" (
 	SET ERROR_MESSAGE=[ERROR] file ..\..\.settings\.token does not exist or is empty ...
-	GOTO :ERROR_EXIT
+	GOTO ERROR_EXIT
 )
 
-call "C:\Program Files\balena-cli\bin\balena" logout
+CALL "%BALENA_CLI%" logout
 
-call "C:\Program Files\balena-cli\bin\balena" login --token "%BALENA_APITOKEN%"
+CALL "%BALENA_CLI%" login --token "%BALENA_APITOKEN%"
 
-call "C:\Program Files\balena-cli\bin\balena" whoami
+CALL "%BALENA_CLI%" whoami
 
-GOTO :CLEAN_EXIT
+GOTO CLEAN_EXIT
 
 :ERROR_EXIT
 ECHO %ERROR_MESSAGE%
@@ -52,4 +66,5 @@ ECHO %ERROR_MESSAGE%
 :CLEAN_EXIT
 CD %CMD_DIR%
 
+ECHO.
 PAUSE
