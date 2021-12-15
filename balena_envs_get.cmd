@@ -51,6 +51,7 @@ CD %CMD_DIR%
 
 CALL .\utils\balena_version.cmd
 CD %CMD_DIR%
+
 ::	 
 :: The actual programs/scripts to run
 ::

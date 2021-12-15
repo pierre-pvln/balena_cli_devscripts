@@ -3,7 +3,7 @@
 :: @name:     balena_push_local.cmd
 :: @purpose:  (re)build the container(s) direct to local device
 ::
-:: @version   v0.0.3  2021-08-26
+:: @version   v0.0.4  2021-12-15
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
@@ -20,19 +20,36 @@ SET PDRIVE=%~d0
 :: Setting the directory and drive of this commandfile
 SET CMD_DIR=%~dp0
 
-ECHO [INFO ] Start building container(s) ...
+SET ERROR_MESSAGE=[INFO ] No error ...
+
+:: BALENA SETTINGS
+:: ===============
+SET "BALENA_CLI=C:\Program Files\balena-cli\bin\balena"
+
+:: Check balenadev scripts with github 
+:: ===================================
+ECHO [INFO ] Are we up to date with the balenadev scripts? ...
+::    -s, --short           show status concisely
+::    -b, --branch          show branch information
+git status -s -b
+ECHO.
+timeout /T 5
+CD %CMD_DIR%
+
+ECHO.
+ECHO [INFO ] Start building container(s) on local machine ...
 ECHO [INFO ] Building as:
-CALL "C:\Program Files\balena-cli\bin\balena" whoami
+CALL "%BALENA_CLI%" whoami
+CD %CMD_DIR%
 ECHO.
 
-cd ..\containers
+CD ..\containers
 :: Build a fresh image, preventing the use of cached imaged layers from previous builds of this project   
 :: https://www.balena.io/docs/learn/deploy/deployment/#balena-push
 :: https://www.balena.io/docs/learn/deploy/deployment/#--nocache--c
 :: https://www.balena.io/docs/learn/develop/local-mode/#push-over-a-new-project
+CALL "%BALENA_CLI%" push 192.168.2.5 --nocache
+CD %CMD_DIR%
 
-call "C:\Program Files\balena-cli\bin\balena" push 192.168.2.5 --nocache
-
-cd %CMD_DIR%
-
-pause
+ECHO.
+PAUSE
