@@ -1,9 +1,8 @@
-@ECHO off
 ::
 :: @name:     balena_login.cmd
 :: @purpose:  login to balena
 ::
-:: @version:  v0.0.5  2021-09-29
+:: @version:  v0.0.6  2021-12-15
 :: @author:   pierre@ipheion.eu
 :: @copyright: (C) 2020-2021 Pierre Veelen
 ::
@@ -16,14 +15,14 @@ IF EXIST "..\..\.settings\.token" (
 
 IF "%BALENA_APITOKEN%" == "" (
 	SET ERROR_MESSAGE=[ERROR] file ..\..\.settings\.token does not exist or is empty ...
-	GOTO :ERROR_EXIT_SUBSCRIPT
+	GOTO ERROR_EXIT_SUBSCRIPT
 )
 
-call "C:\Program Files\balena-cli\bin\balena" logout
+CALL "%BALENA_CLI%" logout
 
-call "C:\Program Files\balena-cli\bin\balena" login --token "%BALENA_APITOKEN%"
+CALL "%BALENA_CLI%" login --token "%BALENA_APITOKEN%"
 
-call "C:\Program Files\balena-cli\bin\balena" whoami
+CALL "%BALENA_CLI%" whoami
 
 GOTO CLEAN_EXIT_SUBSCRIPT
 
