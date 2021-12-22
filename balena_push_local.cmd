@@ -48,7 +48,7 @@ CD ..\containers
 :: https://www.balena.io/docs/learn/deploy/deployment/#balena-push
 :: https://www.balena.io/docs/learn/deploy/deployment/#--nocache--c
 :: https://www.balena.io/docs/learn/develop/local-mode/#push-over-a-new-project
-CALL "%BALENA_CLI%" push 192.168.2.5 --nocache
+CALL "%BALENA_CLI%" push 192.168.2.29 --nocache
 CD %CMD_DIR%
 
 ECHO.
