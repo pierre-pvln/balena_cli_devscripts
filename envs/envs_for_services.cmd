@@ -2,7 +2,7 @@
 :: @name:     envs_for_services.cmd
 :: @purpose:  set environment variables for services
 ::
-:: @version   v0.0.6  2021-12-15
+:: @version   v0.0.7  2021-12-28
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
