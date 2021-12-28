@@ -13,6 +13,7 @@ ECHO [INFO ] Setting environment variables for services ...
 
 :: for all services
 CALL "%BALENA_CLI%" env add UDP_PORT 65432 -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
+CALL "%BALENA_CLI%" env add USB_TTY_PORT ttyACM0 -f %BALENA_ORGANIZATION%/%BALENA_FLEET%
 
 :: for service MQTT-publisher 
 CALL "%BALENA_CLI%" env add SEND_TO_MQTT_BROKER False -f %BALENA_ORGANIZATION%/%BALENA_FLEET% --service MQTT-publisher
