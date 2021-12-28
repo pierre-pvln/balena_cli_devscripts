@@ -8,7 +8,7 @@
 ::
 
 ECHO.
-ECHO [INFO ] Setting environment variables for disabling bluetooth and enabling uart on CM4 IO board ...
+ECHO [INFO ] Setting environment variables for disabling bluetooth and enabling uart on computerboard ...
 :: https://www.balena.io/docs/reference/balena-cli/#envs
 :: set environment variables for usage with AIS dAISy HAT rpi
 :: Disable bluetooth serial
