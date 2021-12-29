@@ -90,6 +90,10 @@ IF %errorlevel% EQU 0 (
 		CALL .\envs\envs_for_services.cmd
 	)
 
+    CD %CMD_DIR%
+	IF EXIST "..\containers\%BALENA_FLEET%.cmd" (
+		CALL "..\containers\%BALENA_FLEET%.cmd"
+	)
 ) ELSE (
 	SET ERROR_MESSAGE=[ERROR] Did not set enviroment vars ...
 	GOTO :ERROR_EXIT

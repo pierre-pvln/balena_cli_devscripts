@@ -77,6 +77,10 @@ IF EXIST "..\containers\envs_for_services" (
 	CALL .\envs\envs_for_services.cmd
 )
 
+CD %CMD_DIR%
+IF EXIST "..\containers\%BALENA_FLEET%.cmd" (
+	CALL "..\containers\%BALENA_FLEET%.cmd"
+)
 GOTO CLEAN_EXIT
 
 :ERROR_EXIT
