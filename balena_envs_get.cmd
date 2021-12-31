@@ -3,7 +3,7 @@
 :: @name:     balena_envs_get.cmd
 :: @purpose:  show the balena environment settings
 ::
-:: @version   v0.0.6  2021-12-14
+:: @version   v0.0.7  2021-12-31
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2021 Pierre Veelen
 ::
@@ -26,6 +26,8 @@ SET ERROR_MESSAGE=[INFO ] No error ...
 :: ===============
 SET "BALENA_CLI=C:\Program Files\balena-cli\bin\balena"
 
+ECHO [INFO ] Start running %ME%
+ECHO.
 :: Check balenadev scripts with github 
 :: ===================================
 ECHO [INFO ] Are we up to date with the balenadev scripts? ...
