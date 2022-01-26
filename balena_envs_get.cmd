@@ -22,21 +22,16 @@ SET CMD_DIR=%~dp0
 
 SET ERROR_MESSAGE=[INFO ] No error ...
 
+ECHO [INFO ] Start running %ME%
+
+ECHO.
+CALL .\utils\check_github.cmd
+timeout /T 5
+CD %CMD_DIR%
+
 :: BALENA SETTINGS
 :: ===============
 SET "BALENA_CLI=C:\Program Files\balena-cli\bin\balena"
-
-ECHO [INFO ] Start running %ME%
-ECHO.
-:: Check balenadev scripts with github 
-:: ===================================
-ECHO [INFO ] Are we up to date with the balenadev scripts? ...
-::    -s, --short           show status concisely
-::    -b, --branch          show branch information
-git status -s -b
-ECHO.
-timeout /T 5
-CD %CMD_DIR%
 
 CALL .\utils\balena_login.cmd
 IF %ERRORLEVEL% NEQ 0 (
