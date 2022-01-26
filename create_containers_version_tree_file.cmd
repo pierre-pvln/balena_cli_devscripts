@@ -1,12 +1,14 @@
 @ECHO off
+:: =================================================================
 ::
 :: @name:     create_containers_version_tree_file.cmd
 :: @purpose:  create file with the tree of all the files for a balena fleet version or release
 ::
-:: @version   v0.0.1  2022-01-20
+:: @version   v0.0.2  2022-01-26
 :: @author    pierre@ipheion.eu
-:: @copyright (C) 2020-2021 Pierre Veelen
+:: @copyright (C) 2020-2022 Pierre Veelen
 ::
+:: =================================================================
 
 SETLOCAL ENABLEEXTENSIONS
 
@@ -22,21 +24,18 @@ SET CMD_DIR=%~dp0
 
 SET ERROR_MESSAGE=[INFO ] No error ...
 
+ECHO [INFO ] Start running %ME%
+ECHO.
+
+:: GIT / GITHUB CHECK
+:: ==================
+CALL .\utils\check_github.cmd
+timeout /T 5
+CD %CMD_DIR%
+
 :: BALENA SETTINGS
 :: ===============
 SET "BALENA_CLI=C:\Program Files\balena-cli\bin\balena"
-
-ECHO [INFO ] Start running %ME%
-ECHO.
-:: Check balenadev scripts with github 
-:: ===================================
-ECHO [INFO ] Are we up to date with the balenadev scripts? ...
-::    -s, --short           show status concisely
-::    -b, --branch          show branch information
-git status -s -b
-ECHO.
-timeout /T 5
-CD %CMD_DIR%
 
 CALL .\utils\balena_login.cmd
 IF %ERRORLEVEL% NEQ 0 (

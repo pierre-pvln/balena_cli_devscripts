@@ -1,12 +1,14 @@
 @ECHO off
+:: =================================================================
 ::
 :: @name:     balena_envs_get.cmd
 :: @purpose:  show the balena environment settings
 ::
-:: @version   v0.0.7  2021-12-31
+:: @version   v0.0.8  2022-01-26
 :: @author    pierre@ipheion.eu
-:: @copyright (C) 2020-2021 Pierre Veelen
+:: @copyright (C) 2020-2022 Pierre Veelen
 ::
+:: =================================================================
 
 SETLOCAL ENABLEEXTENSIONS
 
@@ -23,8 +25,10 @@ SET CMD_DIR=%~dp0
 SET ERROR_MESSAGE=[INFO ] No error ...
 
 ECHO [INFO ] Start running %ME%
-
 ECHO.
+
+:: GIT / GITHUB CHECK
+:: ==================
 CALL .\utils\check_github.cmd
 timeout /T 5
 CD %CMD_DIR%
