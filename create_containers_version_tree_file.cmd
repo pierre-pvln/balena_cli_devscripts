@@ -1,6 +1,6 @@
 @ECHO off
 ::
-:: @name:     create_containers_tree_file.cmd
+:: @name:     create_containers_version_tree_file.cmd
 :: @purpose:  create file with the tree of all the files for a balena fleet version or release
 ::
 :: @version   v0.0.1  2022-01-20
