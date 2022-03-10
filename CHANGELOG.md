@@ -24,11 +24,12 @@ straightforward as possible.
 ### Security
 - None
 
+## [0.0.2] - 2022-03-10
+### Changed
+- added using ENV vars when running balena_push_with_pull_build_env_added
+
 ## [0.0.1] - 2022-01-20
 
-### Changed
-- None 
- 
 ### Added
 - file CHANGELOG.md (this file) added
 - create_containers_version_tree_file.cmd. <br>

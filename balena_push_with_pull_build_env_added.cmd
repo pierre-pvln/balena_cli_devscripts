@@ -4,7 +4,7 @@
 :: @name:     balena_push_with_pull_build_env_added.cmd
 :: @purpose:  (re)build the container(s)
 ::
-:: @version   v0.0.8  2022-01-26
+:: @version   v0.0.9  2022-03-10
 :: @author    pierre@ipheion.eu
 :: @copyright (C) 2020-2022 Pierre Veelen
 ::
@@ -91,6 +91,10 @@ IF %errorlevel% EQU 0 (
 		CALL .\envs\envs_for_services.cmd
 	)
 
+    CD %CMD_DIR%
+	IF EXIST "..\containers\%BALENA_FLEET%.cmd" (
+		CALL "..\containers\%BALENA_FLEET%.cmd"
+	)
 ) ELSE (
 	SET ERROR_MESSAGE=[ERROR] Did not set enviroment vars ...
 	GOTO :ERROR_EXIT
