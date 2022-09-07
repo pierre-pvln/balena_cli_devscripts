@@ -1,4 +1,3 @@
-
 # Change Log
 All notable changes to this project will be documented in this file. Any changes in containers or services will be documented in the container/service folder
  
@@ -24,7 +23,16 @@ straightforward as possible.
 ### Security
 - None
 
+## [0.0.3] - 2022-09-06
+
+### Added
+- git_status.cmd
+
+### Changed
+- set_git_local_user_config.cmd
+
 ## [0.0.2] - 2022-03-10
+
 ### Changed
 - added using ENV vars when running balena_push_with_pull_build_env_added
 
