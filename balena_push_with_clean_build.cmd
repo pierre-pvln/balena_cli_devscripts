@@ -70,6 +70,8 @@ CD ..\containers
 
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --pull
 ::call "C:\Program Files\balena-cli\bin\balena" push daya-mqtt-python-64 --nocache --debug
+ECHO CALL "%BALENA_CLI%" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --nocache --multi-dockerignore
+ECHO.
 CALL "%BALENA_CLI%" push %BALENA_ORGANIZATION%/%BALENA_FLEET% --nocache --multi-dockerignore
 IF %errorlevel% EQU 0 (
 	:: Set info on folders used for code and settings
